@@ -1,13 +1,13 @@
 package nl.isdat.aoc2020
 
-import nl.isdat.aoc2020.Utils.fileAsLines
+import nl.isdat.aoc2020.Utils.fileAsSequence
 
 const val GOAL = 2020
 
 object Day1 {
     @JvmStatic
     fun main(args: Array<String>) {
-        val numbers = fileAsLines("day1.txt").map { it.toInt() }.toList()
+        val numbers = fileAsSequence("day1.txt").map { it.toInt() }.toList()
 
         part1(numbers)
         part2(numbers)
