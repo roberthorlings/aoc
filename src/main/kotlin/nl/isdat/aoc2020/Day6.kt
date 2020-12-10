@@ -1,11 +1,11 @@
 package nl.isdat.aoc2020
 
-import nl.isdat.aoc2020.Utils.fileAsLines
+import nl.isdat.aoc2020.Utils.fileAsSequence
 
 object Day6 {
     @JvmStatic
     fun main(args: Array<String>) {
-        val groups = parse(fileAsLines("day6.txt")).toList()
+        val groups = parse(fileAsSequence("day6.txt")).toList()
 
         part1(groups)
         part2(groups)
