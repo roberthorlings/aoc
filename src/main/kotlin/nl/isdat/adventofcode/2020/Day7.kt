@@ -1,17 +1,12 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode.`2020`
 
-import nl.isdat.aoc2020.Utils.fileAsSequence
+import nl.isdat.adventofcode.Day
+import nl.isdat.adventofcode.Input.fileAsSequence
 
-object Day7 {
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val bags = fileAsSequence("day7.txt").map(::parse).toList()
+class Day7: Day() {
+    val bags = fileAsSequence("day7.txt").map(::parse).toList()
 
-        part1(bags)
-        part2(bags)
-    }
-
-    private fun part1(bags: List<BagDefinition>) {
+    override fun part1(): Int {
         val open = mutableListOf("shiny gold")
         val found = mutableListOf<String>()
 
@@ -30,16 +25,16 @@ object Day7 {
             open += eligibleContainers
         }
 
-        println("Part 1 result: " + found.size)
+        return found.size
     }
 
-    private fun part2(bags: List<BagDefinition>) {
+    override fun part2(): Int {
         val bagMap = bags.associateBy { it.name }
         val search = "shiny gold"
 
         // -1 to account for the original shiny gold bag counted
         val answer = getNumContained(bagMap, search) - 1
-        println("Part 2 result: " + answer)
+        return answer
     }
 
     private fun getContainers(bags: List<BagDefinition>, bag: String) =

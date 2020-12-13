@@ -1,19 +1,15 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode.`2020`
 
-import nl.isdat.aoc2020.Utils.fileAsSequence
+import nl.isdat.adventofcode.Day
+import nl.isdat.adventofcode.Input.fileAsSequence
 
-object Day10 {
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val adapters = fileAsSequence("day10.txt").map(String::toLong).toList().sorted()
+class Day10: Day() {
+    val adapters = fileAsSequence("day10.txt").map(String::toLong).toList().sorted()
+    val deviceAdapter = adapters.last() + 3
 
-        part1(adapters)
-        part2(adapters)
-    }
-
-    private fun part1(adapters: List<Long>) {
+    override fun part1(): Int {
         // Add the outlet and the device adapter
-        val allAdapters = listOf(0L) + adapters + (adapters.last() + 3)
+        val allAdapters = listOf(0L) + adapters + deviceAdapter
 
         // Check differences between adjacent adapters
         val differences = allAdapters.windowed(2).map { it[1] - it[0] }
@@ -21,16 +17,14 @@ object Day10 {
         // Count all differences
         val counts = differences.groupingBy { it }.eachCount()
 
-        println("Part 1 result: " + (counts[1]!! * counts[3]!!))
+        return counts[1]!! * counts[3]!!
     }
 
-    private fun part2(adapters: List<Long>) {
+    override fun part2(): Long {
         // Add the device adapter
-        val allAdapters = adapters + (adapters.last() + 3)
+        val allAdapters = adapters + deviceAdapter
 
-        val answer = configurationsEligible(0L, allAdapters)
-
-        println("Part 2 result: " + answer)
+        return configurationsEligible(0L, allAdapters)
     }
 
     private fun adaptersEligible(current: Long, adapters: List<Long>) =

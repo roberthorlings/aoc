@@ -1,8 +1,8 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode
 
 import java.nio.charset.Charset
 
-object Utils {
+object Input {
     fun fileAsSequence(filename: String) = javaClass.classLoader.getResourceAsStream(filename).bufferedReader(Charset.defaultCharset()).lineSequence()
     fun fileAsList(filename: String) = fileAsSequence(filename).toList()
 }

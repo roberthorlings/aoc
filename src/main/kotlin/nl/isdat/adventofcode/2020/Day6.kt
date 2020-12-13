@@ -1,25 +1,13 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode.`2020`
 
-import nl.isdat.aoc2020.Utils.fileAsSequence
+import nl.isdat.adventofcode.Day
+import nl.isdat.adventofcode.Input.fileAsSequence
 
-object Day6 {
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val groups = parse(fileAsSequence("day6.txt")).toList()
+class Day6: Day() {
+    val groups = parse(fileAsSequence("day6.txt")).toList()
 
-        part1(groups)
-        part2(groups)
-    }
-
-    private fun part1(groups: List<Group>) {
-        val answer = groups.sumBy { it.uniqueQuestionsAnswered.size }
-        println("Part 1 result: " + answer)
-    }
-
-    private fun part2(groups: List<Group>) {
-        val answer = groups.sumBy { it.questionsAnsweredByEveryone.size }
-        println("Part 2 result: " + answer)
-    }
+    override fun part1(): Int = groups.sumBy { it.uniqueQuestionsAnswered.size }
+    override fun part2(): Int = groups.sumBy { it.questionsAnsweredByEveryone.size }
 
     private fun parse(input: Sequence<String>): Sequence<Group> = sequence {
         var list = input.toList()

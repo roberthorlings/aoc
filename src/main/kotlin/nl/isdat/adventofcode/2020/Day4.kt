@@ -1,35 +1,13 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode.`2020`
 
-import nl.isdat.aoc2020.Utils.fileAsList
+import nl.isdat.adventofcode.Day
+import nl.isdat.adventofcode.Input.fileAsList
 
-object Day4 {
-    val REQUIRED_FIELDS = listOf(
-        "byr",
-        "iyr",
-        "eyr",
-        "hgt",
-        "hcl",
-        "ecl",
-        "pid",
-        // "cid"
-    )
+class Day4: Day() {
+    val passports = parse(fileAsList("day4.txt"))
 
-
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val passports = parse(fileAsList("day4.txt"))
-
-        part1(passports)
-        part2(passports)
-    }
-
-    private fun part1(passports: List<Passport>) {
-        println("Part 1 result: " + passports.count { it.containsRequiredFields() })
-    }
-
-    private fun part2(passports: List<Passport>) {
-        println("Part 2 result: " + passports.count { it.containsRequiredFields() && it.matchesAllRules() })
-    }
+    override fun part1(): Int = passports.count { it.containsRequiredFields() }
+    override fun part2(): Int = passports.count { it.containsRequiredFields() && it.matchesAllRules() }
 
     private fun parse(lines: List<String>): List<Passport> {
         var remaining = lines
@@ -56,6 +34,17 @@ object Day4 {
     }
 
     data class Passport(val fields: Map<String, String>) {
+        val REQUIRED_FIELDS = listOf(
+            "byr",
+            "iyr",
+            "eyr",
+            "hgt",
+            "hcl",
+            "ecl",
+            "pid",
+            // "cid"
+        )
+
         fun containsRequiredFields() = fields.keys.containsAll(REQUIRED_FIELDS)
         fun matchesAllRules() = rules.all { (key, validator) -> fields[key]?.let(validator) ?: true  }
 

@@ -1,23 +1,14 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode.`2020`
 
-import nl.isdat.aoc2020.Utils.fileAsSequence
+import nl.isdat.adventofcode.Day
+import nl.isdat.adventofcode.Input.fileAsSequence
 
-object Day3 {
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val rows = fileAsSequence("day3.txt").map { Row(it) }.toList()
+class Day3: Day() {
+    val rows = fileAsSequence("day3.txt").map { Row(it) }.toList()
 
-        part1(rows)
-        part2(rows)
-    }
+    override fun part1(): Int =countTreesForSlope(rows, Slope(3, 1))
 
-    private fun part1(rows: List<Row>) {
-        val numTrees = countTreesForSlope(rows, Slope(3, 1))
-
-        println("Part 1 result: " + numTrees)
-    }
-
-    private fun part2(rows: List<Row>) {
+    override fun part2(): Int {
         val slopes = listOf(
             Slope(1, 1),
             Slope(3, 1),
@@ -32,7 +23,7 @@ object Day3 {
             count
         }.reduce { acc, i -> acc * i }
 
-        println("Part 1 result: " + total)
+        return total
     }
 
     private fun countTreesForSlope(rows: List<Row>, slope: Slope): Int =

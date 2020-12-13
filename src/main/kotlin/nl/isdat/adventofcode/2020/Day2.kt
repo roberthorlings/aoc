@@ -1,25 +1,16 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode.`2020`
 
-import nl.isdat.aoc2020.Utils.fileAsSequence
+import nl.isdat.adventofcode.Day
+import nl.isdat.adventofcode.Input.fileAsSequence
 
-object Day2 {
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val combinations = fileAsSequence("day2.txt").map(::parseLine).toList()
+class Day2: Day() {
+    val combinations = fileAsSequence("day2.txt").map(::parseLine).toList()
 
-        part1(combinations)
-        part2(combinations)
-    }
+    override fun part1(): Int =
+        combinations.count { it.rule.validAccordingToOldRule(it.password) }
 
-    private fun part1(combinations: List<PasswordWithRule>) {
-        val numValid = combinations.count { it.rule.validAccordingToOldRule(it.password) }
-        println("Part 1 result: " + numValid)
-    }
-
-    private fun part2(combinations: List<PasswordWithRule>) {
-        val numValid = combinations.count { it.rule.validAccordingToNewRule(it.password) }
-        println("Part 2 result: " + numValid)
-    }
+    override fun part2(): Int =
+        combinations.count { it.rule.validAccordingToNewRule(it.password) }
 
     fun parseLine(line: String) =
         line.split(" ")

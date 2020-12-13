@@ -1,23 +1,18 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode.`2020`
 
-import nl.isdat.aoc2020.Utils.fileAsSequence
+import nl.isdat.adventofcode.Day
+import nl.isdat.adventofcode.Input.fileAsSequence
 
-object Day8 {
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val instructions = fileAsSequence("day8.txt").map(::parse).toList()
+class Day8: Day() {
+    val instructions = fileAsSequence("day8.txt").map(::parse).toList()
 
-        part1(instructions)
-        part2(instructions)
-    }
-
-    private fun part1(instructions: List<Instruction>) {
+    override fun part1(): Int {
         val stateMachine = StateMachine(instructions)
         stateMachine.run()
-        println("Part 1 result: " + stateMachine.accumulator)
+        return stateMachine.accumulator
     }
 
-    private fun part2(instructions: List<Instruction>) {
+    override fun part2(): Int {
         (0 until instructions.size).forEach { idx ->
             val instruction = instructions[idx]
 
@@ -33,11 +28,13 @@ object Day8 {
                 stateMachine.run()
 
                 if(stateMachine.isFinished()) {
-                    println("Part 2 result: " + stateMachine.accumulator)
+                    return stateMachine.accumulator
                 }
             }
         }
 
+        System.err.println("The state machine never finished!")
+        return 0
     }
 
     private fun parse(input: String): Instruction =

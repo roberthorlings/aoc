@@ -1,23 +1,14 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode.`2020`
 
-import nl.isdat.aoc2020.Utils.fileAsSequence
+import nl.isdat.adventofcode.Day
+import nl.isdat.adventofcode.Input.fileAsSequence
 
-object Day9 {
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val values = fileAsSequence("day9.txt").map(String::toLong).toList()
+class Day9: Day() {
+    val values = fileAsSequence("day9.txt").map(String::toLong).toList()
 
-        part1(values)
-        part2(values)
-    }
+    override fun part1(): Long = XmasPort(25, values).invalidNumbers.first()
 
-    private fun part1(values: List<Long>) {
-        val xmasPort = XmasPort(25, values)
-
-        println("Part 1 result: " + xmasPort.invalidNumbers.first())
-    }
-
-    private fun part2(values: List<Long>) {
+    override fun part2(): Long {
         val result: Long = 217430975
 
         // Only considers numbers up to this value, as numbers above will be larger
@@ -30,13 +21,13 @@ object Day9 {
 
             if(window != null) {
                 // A match was found
-                println("Part 2 result: " + (window.minOrNull()!! + window.maxOrNull()!!))
+                return window.minOrNull()!! + window.maxOrNull()!!
             }
         }
 
-
+        System.err.println("No series found that matches the required sum")
+        return 0
     }
-
 
     class XmasPort(val windowSize: Int, val values: List<Long>) {
         val invalidNumbers = values

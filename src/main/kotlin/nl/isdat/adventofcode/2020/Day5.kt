@@ -1,22 +1,17 @@
-package nl.isdat.aoc2020
+package nl.isdat.adventofcode.`2020`
 
-import nl.isdat.aoc2020.Utils.fileAsSequence
+import nl.isdat.adventofcode.Day
+import nl.isdat.adventofcode.Input.fileAsSequence
 
-object Day5 {
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val rows = fileAsSequence("day5.txt").map { parse(it) }.toList()
+class Day5: Day() {
+    val seats = fileAsSequence("day5.txt").map { parse(it) }.toList()
 
-        part1(rows)
-        part2(rows)
+    override fun part1(): Int {
+        val seat = seats.maxByOrNull { it.seatID } ?: throw java.lang.IllegalArgumentException("Empty list of seats given")
+        return seat.seatID
     }
 
-    private fun part1(seats: List<Seat>) {
-        val seat = seats.maxBy { it.seatID } ?: throw java.lang.IllegalArgumentException("Empty list of seats given")
-        println("Part 1 result: " + seat.seatID)
-    }
-
-    private fun part2(seats: List<Seat>) {
+    override fun part2(): Int {
         val rows = seats.map { it.row }
         val columns = seats.map { it.column }
 
@@ -31,11 +26,12 @@ object Day5 {
                     && seats.contains(Seat(r - 1, c))
                     && seats.contains(Seat(r + 1, c))
                 ) {
-                    println("Part 2 result: " + seat + " - " + seat.seatID )
-                    break@outer
+                    return seat.seatID
                 }
             }
         }
+
+        return 0
     }
 
     private fun parse(input: String): Seat =
