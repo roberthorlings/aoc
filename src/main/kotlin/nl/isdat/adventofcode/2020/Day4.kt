@@ -4,7 +4,7 @@ import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Input.fileAsList
 
 class Day4: Day() {
-    val passports = parse(fileAsList("day4.txt"))
+    val passports = parse(fileAsList("2020/day4.txt"))
 
     override fun part1(): Int = passports.count { it.containsRequiredFields() }
     override fun part2(): Int = passports.count { it.containsRequiredFields() && it.matchesAllRules() }

@@ -4,7 +4,7 @@ import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Input.fileAsSequence
 
 class Day9: Day() {
-    val values = fileAsSequence("day9.txt").map(String::toLong).toList()
+    val values = fileAsSequence("2020/day9.txt").map(String::toLong).toList()
 
     override fun part1(): Long = XmasPort(25, values).invalidNumbers.first()
 

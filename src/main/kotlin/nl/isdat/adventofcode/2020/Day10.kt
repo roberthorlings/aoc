@@ -4,7 +4,7 @@ import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Input.fileAsSequence
 
 class Day10: Day() {
-    val adapters = fileAsSequence("day10.txt").map(String::toLong).toList().sorted()
+    val adapters = fileAsSequence("2020/day10.txt").map(String::toLong).toList().sorted()
     val deviceAdapter = adapters.last() + 3
 
     override fun part1(): Int {

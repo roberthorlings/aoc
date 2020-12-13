@@ -4,7 +4,7 @@ import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Input.fileAsSequence
 
 class Day7: Day() {
-    val bags = fileAsSequence("day7.txt").map(::parse).toList()
+    val bags = fileAsSequence("2020/day7.txt").map(::parse).toList()
 
     override fun part1(): Int {
         val open = mutableListOf("shiny gold")

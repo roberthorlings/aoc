@@ -4,7 +4,7 @@ import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Input.fileAsSequence
 
 class Day6: Day() {
-    val groups = parse(fileAsSequence("day6.txt")).toList()
+    val groups = parse(fileAsSequence("2020/day6.txt")).toList()
 
     override fun part1(): Int = groups.sumBy { it.uniqueQuestionsAnswered.size }
     override fun part2(): Int = groups.sumBy { it.questionsAnsweredByEveryone.size }

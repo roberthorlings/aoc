@@ -4,7 +4,7 @@ import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Input.fileAsSequence
 
 class Day3: Day() {
-    val rows = fileAsSequence("day3.txt").map { Row(it) }.toList()
+    val rows = fileAsSequence("2020/day3.txt").map { Row(it) }.toList()
 
     override fun part1(): Int =countTreesForSlope(rows, Slope(3, 1))
 

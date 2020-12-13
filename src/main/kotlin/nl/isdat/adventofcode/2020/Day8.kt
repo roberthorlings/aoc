@@ -4,7 +4,7 @@ import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Input.fileAsSequence
 
 class Day8: Day() {
-    val instructions = fileAsSequence("day8.txt").map(::parse).toList()
+    val instructions = fileAsSequence("2020/day8.txt").map(::parse).toList()
 
     override fun part1(): Int {
         val stateMachine = StateMachine(instructions)

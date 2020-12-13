@@ -4,7 +4,7 @@ import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Input.fileAsSequence
 
 class Day2: Day() {
-    val combinations = fileAsSequence("day2.txt").map(::parseLine).toList()
+    val combinations = fileAsSequence("2020/day2.txt").map(::parseLine).toList()
 
     override fun part1(): Int =
         combinations.count { it.rule.validAccordingToOldRule(it.password) }

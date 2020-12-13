@@ -6,7 +6,7 @@ import nl.isdat.adventofcode.Input.fileAsSequence
 
 class Day1: Day() {
     val GOAL = 2020
-    val numbers = fileAsSequence("day1.txt").map { it.toInt() }.toList()
+    val numbers = fileAsSequence("2020/day1.txt").map { it.toInt() }.toList()
 
     override fun part1(): Int {
         // Find the two numbers that sum up to 2020

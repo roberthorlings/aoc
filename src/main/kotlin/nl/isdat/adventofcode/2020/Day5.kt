@@ -4,7 +4,7 @@ import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Input.fileAsSequence
 
 class Day5: Day() {
-    val seats = fileAsSequence("day5.txt").map { parse(it) }.toList()
+    val seats = fileAsSequence("2020/day5.txt").map { parse(it) }.toList()
 
     override fun part1(): Int {
         val seat = seats.maxByOrNull { it.seatID } ?: throw java.lang.IllegalArgumentException("Empty list of seats given")
