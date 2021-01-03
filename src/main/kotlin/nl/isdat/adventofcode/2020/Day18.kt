@@ -6,11 +6,11 @@ import nl.isdat.adventofcode.Input.fileAsList
 class Day18 : Day() {
     val expressions = fileAsList("2020/day18.txt").map(::tokenize)
 
-//    override fun part1(): Long = expressions.map {
-//        val result = it.evaluate()
-//        println("${it} = ${result}")
-//        result.toLong()
-//    }.sum()
+    override fun part1(): Long = expressions.map {
+        val result = it.evaluate()
+        println("${it} = ${result}")
+        result.toLong()
+    }.sum()
 
     override fun part2(): Long = expressions.map {
         val result = it.evaluate2()
