@@ -2,6 +2,9 @@ package nl.isdat.adventofcode
 
 data class Point(val x: Int, val y: Int) {
     fun neighbours() = NEIGHBOUR_VECTORS.map { this + it }
+    fun directNeighbours() = NEIGHBOUR_VECTORS
+        .map { this + it }
+        .filter { it.x == this.x || it.y == this.y }
 
     operator fun times(count: Int) = Point(count * x, count * y)
     operator fun plus(other: Point) = Point(x + other.x, y + other.y)
@@ -11,7 +14,7 @@ data class Point(val x: Int, val y: Int) {
     fun rotateCounterClockwise() = Point(x = -y, y = x)
 
     /**
-     * Rturns the manhattan distance between this point and the other
+     * Returns the manhattan distance between this point and the other
      */
     fun manhattan(other: Point): Int = Math.abs(x - other.x) + Math.abs(y - other.y)
 

@@ -17,6 +17,11 @@ data class Grid<T>(private val data: List<List<T>>) {
     fun neighbours(point: Point): Collection<Point> = point.neighbours().filter(this::contains)
 
     /**
+     * Returns a collection of points which are the direct neighbours (horizontal, vertical but not diagonal) of the given point
+     */
+    fun directNeighbours(point: Point): Collection<Point> = point.directNeighbours().filter(this::contains)
+
+    /**
      * Returns a sequence of all points within this grid
      */
     fun points(): Sequence<Point> = sequence {

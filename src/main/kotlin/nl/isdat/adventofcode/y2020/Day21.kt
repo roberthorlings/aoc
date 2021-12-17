@@ -1,10 +1,7 @@
-package nl.isdat.adventofcode.`2020`
+package nl.isdat.adventofcode.y2020
 
 import nl.isdat.adventofcode.Day
-import nl.isdat.adventofcode.Direction
 import nl.isdat.adventofcode.Input.fileAsList
-import nl.isdat.adventofcode.Input.fileAsString
-import nl.isdat.adventofcode.Matrix
 import java.lang.IllegalArgumentException
 
 class Day21 : Day() {

@@ -1,7 +1,5 @@
 package nl.isdat.adventofcode
 
-import kotlin.system.measureTimeMillis
-
 object Runner {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -18,7 +16,7 @@ object Runner {
             return
         }
 
-        val execution = Class.forName("nl.isdat.adventofcode.${year}.Day${day}").getDeclaredConstructor().newInstance() as Day
+        val execution = Class.forName("nl.isdat.adventofcode.y${year}.Day${day}").getDeclaredConstructor().newInstance() as Day
 
         execution.run()
     }

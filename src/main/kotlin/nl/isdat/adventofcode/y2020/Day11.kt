@@ -1,4 +1,4 @@
-package nl.isdat.adventofcode.`2020`
+package nl.isdat.adventofcode.y2020
 
 import nl.isdat.adventofcode.Day
 import nl.isdat.adventofcode.Grid
