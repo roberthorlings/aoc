@@ -72,7 +72,7 @@ data class Grid<T>(private val data: List<List<T>>) {
     }
 
     companion object {
-        fun <T> fromEntries(entries: Map<Point, T>): Grid<T>{
+        fun <T> fromEntries(entries: Map<Point, T>, default: T? = null): Grid<T>{
             if(entries.isEmpty())
                 throw IllegalArgumentException("Empty entries list is not supported")
 
@@ -82,7 +82,7 @@ data class Grid<T>(private val data: List<List<T>>) {
 
             val data = (0..numRows).map { row ->
                 (0..numCols).map { col ->
-                    entries[Point(col, row)] ?: throw IllegalArgumentException("No entry found for point ${col}, ${row}")
+                    entries[Point(col, row)] ?: default ?: throw IllegalArgumentException("No entry found for point ${col}, ${row}")
                 }
             }
 
