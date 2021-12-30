@@ -1,11 +1,14 @@
 package nl.isdat.adventofcode
 
-data class Grid<T>(private val data: List<List<T>>) {
+data class Grid<T>(val data: List<List<T>>) {
     val rows = data.size
     val cols = data[0].size
     val size = rows * cols
 
     operator fun get(p: Point): T = data[p.y][p.x]
+
+    fun topLeft() = Point(0, 0)
+    fun bottomRight() = Point(rows - 1, cols - 1)
 
     /**
      * Returns true if this point is present in this grid
@@ -71,6 +74,13 @@ data class Grid<T>(private val data: List<List<T>>) {
         return data.map { it.joinToString("") }.joinToString("\n")
     }
 
+    fun toPathFinding(edgeScore: (Point, Point) -> Int): PathFinding<Point> {
+        return PathFinding(
+            neighbours = { point -> this.directNeighbours(point).toSet() },
+            edgeScore
+        )
+    }
+
     companion object {
         fun <T> fromEntries(entries: Map<Point, T>, default: T? = null): Grid<T>{
             if(entries.isEmpty())
@@ -88,5 +98,6 @@ data class Grid<T>(private val data: List<List<T>>) {
 
             return Grid(data)
         }
+
     }
 }
